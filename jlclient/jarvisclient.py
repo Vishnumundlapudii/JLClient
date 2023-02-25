@@ -269,10 +269,10 @@ class User(object):
         return resp
     
     @classmethod
-    def transfer_status(cls, id):
+    def transfer_status(cls, transfer_id):
         resp = post({'jwt': token, 
                      'user_id': user_id, 
-                     'id': id}, 'transferstatus')
+                     'transfer_id': transfer_id}, 'transferstatus')
         return resp
 
     @classmethod
