@@ -270,7 +270,7 @@ class User(object):
     
     @classmethod
     def transfer_status(cls, id):
-        resp = post({'jwt': token,
+        resp = post({'jwt': token, 'user_id': user_id, 
                      'id': id}, 'transfer_status')
         return resp
 
