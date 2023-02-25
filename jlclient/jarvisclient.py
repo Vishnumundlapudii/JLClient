@@ -257,6 +257,22 @@ class User(object):
         instances = [instance for instance in User.get_instances() if str(
             instance.machine_id) == str(instance_id)]
         return instances[0] if len(instances) else None
+    
+    @classmethod
+    def copy_data(cls, src_machine_id, dest_machine_id, src_path, dest_path):
+        resp = post({'jwt': token,
+                    'user_id': user_id,
+                    'src_machine_id': src_machine_id,
+                    'dest_machine_id': dest_machine_id,
+                    'src_path': src_path,
+                    'dest_path': dest_path}, 'copyinstancedata')
+        return resp
+    
+    @classmethod
+    def transfer_status(cls, id):
+        resp = post({'jwt': token,
+                     'id': id}, 'transfer_status')
+        return resp
 
     @classmethod
     def add_script(cls, script_path, script_name):
